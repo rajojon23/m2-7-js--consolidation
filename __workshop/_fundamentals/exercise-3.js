@@ -61,27 +61,27 @@ const favoriteDessertsGroupB = {
 // }
 
 function groupByValue(obj) {
-  // do something
+  
+  let people_arr = []
+  let people_obj = {};
+
+   for (const [key, value] of Object.entries(obj)) {
+
+    people_arr = Object.keys(obj).filter(function(key) {
+      return obj[key] === value;
+
+    });
+    people_obj[value] = people_arr;
+    
+
+  }
+
+  
+  return people_obj;
 }
 
 
 
-const setNestedProp = (obj, keys, value) => {
-  
-  if (typeof obj === "undefined") {
-    obj = {};
-  }
-  
-  const [first, ...rest] = keys;
-
-  return {
-    ...obj,
-    [first]: rest.length
-      ? setNestedProp(obj[first], rest, value)
-      : value,
-      
-  };
-};
 
 // Verification via console.log()
 console.log("Group A", groupByValue(favoriteDessertsGroupA));

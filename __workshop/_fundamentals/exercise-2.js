@@ -59,7 +59,7 @@ function sortByPopularity(obj) {
  
 
   new_array.forEach((food) => {
-      let food_count = new_array.filter(function(value){
+      let food_count = new_array.filter(function(value){//get the amount of votes for each food
         return value === food;
       }).length;
       
@@ -80,7 +80,9 @@ let array_no_dup = food_array.reduce((unique, o) => {
     return unique;
 },[]);
 
-let array_sorted = array_no_dup.sortBy("vote_count");
+console.log("array_no_dup", array_no_dup);
+
+let array_sorted = array_no_dup.sortBy("vote_count");// sort the array based on vote_count (most liked food)
 
 
   new_array = [];
@@ -90,11 +92,12 @@ let array_sorted = array_no_dup.sortBy("vote_count");
     
     
     
-  return new_array
+  return new_array;
 
 
 
 }
+
 
 Array.prototype.sortBy = function(p) {
   return this.slice(0).sort(function(a,b) {
