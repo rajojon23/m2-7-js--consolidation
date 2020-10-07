@@ -95,7 +95,7 @@ function transformData(data) {
   relationships = setNestedProp(relationships, ["type"], "mother");
   relationships = setNestedProp(relationships, ["status"], "worried");
   relationships = setNestedProp(relationships, ["superpowers"], []); */
-  /* new_obj = setNestedProp(new_obj, ["relationships"], to_Array(relationships_1)) ;*/
+  /* new_obj = setNestedProp(new_obj, ["relationships"], to_Array(relationships)) ;*/
 
   
   for (const [key, value] of Object.entries(data)) {
@@ -110,7 +110,7 @@ function transformData(data) {
         
    
     }
-    else{
+    else{//if it's a normal key:value, nothing to change
        
        new_obj[key] = value;
     }
@@ -185,7 +185,7 @@ function transformData(data) {
                 
             }
          }
-         else{//nest any other properties that does not contain > 1 value
+         else{//nest any other properties that does not contain > 1 value 
                 relationships = setNestedProp(relationships, [split_upper[1].toLowerCase()], value);
 
          }
