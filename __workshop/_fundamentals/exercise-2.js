@@ -54,6 +54,52 @@ const favoriteDessertsGroupB = {
 
 function sortByPopularity(obj) {
   // Write code
+  let new_array = Object.values(obj);
+  let food_array = [];
+ 
+
+  new_array.forEach((food) => {
+      let food_count = new_array.filter(function(value){
+        return value === food;
+      }).length;
+      
+      let food_obj = {};
+      food_obj.name = food;
+      food_obj.vote_count = food_count;
+      
+     
+      food_array.push(food_obj);
+
+  });
+  
+//finally, remove duplicates from the array of object 
+let array_no_dup = food_array.reduce((unique, o) => {
+    if(!unique.some(obj => obj.food_count === o.food_count && obj.name === o.name)) {
+      unique.push(o);
+    }
+    return unique;
+},[]);
+
+let array_sorted = array_no_dup.sortBy("vote_count");
+
+
+  new_array = [];
+  array_sorted.forEach((item) =>{
+    new_array.push(item.name);
+  });
+    
+    
+    
+  return new_array
+
+
+
+}
+
+Array.prototype.sortBy = function(p) {
+  return this.slice(0).sort(function(a,b) {
+    return (a[p] < b[p]) ? 1 : (a[p] > b[p]) ? -1 : 0; /*switch between a[p] < b[p] and a[p] > b[p] for greater to smaller or smaller to greater */
+  });
 }
 
 // Verification via console.log()
